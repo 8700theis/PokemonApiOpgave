@@ -72,9 +72,46 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        border-top: 2px solid lighten(color(black), 80%);
+        border-bottom: 2px solid lighten(color(black), 80%);
         i {
             font-size: size(xs);
             color: lighten(color(black), 20%);
+        }
+    }
+    &-pokemons {
+        border: 2px solid lighten(color(black), 80%);
+        position: relative;
+        &-heading {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid lighten(color(black), 80%);
+        }
+        &-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 70%;
+            width: 85%;
+            border: 2px solid lighten(color(black), 80%);
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            align-items: center;
+            justify-items: center;
+            &-item {
+                width: 100px;
+                height: 100px;
+                background-color: #1F51FF;
+                cursor: pointer;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
         }
     }
 }

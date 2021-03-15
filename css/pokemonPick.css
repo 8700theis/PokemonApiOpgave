@@ -94,7 +94,39 @@ html {
     grid-row: 2 / 3;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    border-top: 2px solid #cccccc;
+    border-bottom: 2px solid #cccccc; }
     .content-arrows i {
       font-size: 1.6rem;
       color: #333333; }
+  .content-pokemons {
+    border: 2px solid #cccccc;
+    position: relative; }
+    .content-pokemons-heading {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 1px solid #cccccc; }
+    .content-pokemons-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 70%;
+      width: 85%;
+      border: 2px solid #cccccc;
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      align-items: center;
+      justify-items: center; }
+      .content-pokemons-container-item {
+        width: 100px;
+        height: 100px;
+        background-color: #1F51FF;
+        cursor: pointer; }
+        .content-pokemons-container-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }

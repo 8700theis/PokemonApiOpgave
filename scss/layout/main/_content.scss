@@ -1,14 +1,39 @@
-body {
-    background: rgb(138, 138, 138);
-    background: linear-gradient(135deg, rgba(138, 138, 138, 1) 0%, rgba(20, 20, 20, 1) 100%);
-}
-
 .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60vw;
-    height: 60vh;
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5rem;
+    &-btn {
+        display: flex;
+        align-items: center;
+        width: 400px;
+        &-input {
+            width: 50%;
+            padding: 1rem 2rem;
+            outline: none;
+            background-color: color(black);
+            border: 3px solid color(black);
+            color: color(light-white);
+            border-top-left-radius: 3rem;
+            border-bottom-left-radius: 3rem;
+        }
+        &-submit {
+            width: 50%;
+            text-decoration: none;
+            border: 4px solid color(poke-red);
+            background-color: color(poke-red);
+            padding: 1rem;
+            text-align: center;
+            color: color(light-white);
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-top-right-radius: 3rem;
+            border-bottom-right-radius: 3rem;
+            &:hover {
+                background-color: lighten(color(poke-red), 5%);
+                border-color: lighten(color(poke-red), 5%);
+            }
+        }
+    }
 }

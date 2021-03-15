@@ -11,15 +11,63 @@
 html {
   font-size: 62.5%; }
 
-body {
-  background: #8a8a8a;
-  background: linear-gradient(135deg, #8a8a8a 0%, #141414 100%); }
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background: linear-gradient(135deg, #8a8a8a 0%, #393939 100%); }
 
 .content {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 100;
   transform: translate(-50%, -50%);
-  width: 60vw;
-  height: 60vh;
-  background-color: red; }
+  width: 900px;
+  height: 600px;
+  background-color: #f1f1f1;
+  border: 10px solid #000;
+  border-radius: 1rem; }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5rem; }
+  .content-btn {
+    display: flex;
+    align-items: center;
+    width: 400px; }
+    .content-btn-input {
+      width: 50%;
+      padding: 1rem 2rem;
+      outline: none;
+      background-color: #000;
+      border: 3px solid #000;
+      color: #f1f1f1;
+      border-top-left-radius: 3rem;
+      border-bottom-left-radius: 3rem; }
+    .content-btn-submit {
+      width: 50%;
+      text-decoration: none;
+      border: 4px solid #ee1515;
+      background-color: #ee1515;
+      padding: 1rem;
+      text-align: center;
+      color: #f1f1f1;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border-top-right-radius: 3rem;
+      border-bottom-right-radius: 3rem; }
+      .content-btn-submit:hover {
+        background-color: #f02d2d;
+        border-color: #f02d2d; }
+
+.heading {
+  font-size: 3.8rem;
+  line-height: 2;
+  text-align: center; }

@@ -9,3 +9,26 @@ html {
     // 10 / 16 = 0.625 * 100 = 62.5% = 10px
     font-size: 62.5%;
 }
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    background: linear-gradient(135deg, rgba(138, 138, 138, 1) 0%, rgba(57, 57, 57, 1) 100%);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 600px;
+    background-color: color(light-white);
+    border: 10px solid color(black);
+    border-radius: 1rem;
+}

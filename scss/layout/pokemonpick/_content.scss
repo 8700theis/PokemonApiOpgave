@@ -113,5 +113,20 @@
                 }
             }
         }
+        &-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            text-decoration: none;
+            color: color(light-white);
+            background-color: color(poke-red);
+            padding: 1rem 3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 2rem;
+            &:hover {
+                background-color: lighten(color(poke-red), 5%);
+            }
+        }
     }
 }

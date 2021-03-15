@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "pokemon-font";
+  src: url("../../../fonts/PokemonGb-RAeo.ttf"); }
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "pokemon-font"; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  background: #8a8a8a;
+  background: linear-gradient(135deg, #8a8a8a 0%, #141414 100%); }
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vh;
+  background-color: red; }

@@ -1,0 +1,14 @@
+body {
+    background: rgb(138, 138, 138);
+    background: linear-gradient(135deg, rgba(138, 138, 138, 1) 0%, rgba(20, 20, 20, 1) 100%);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vh;
+    background-color: red;
+}

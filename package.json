@@ -1,0 +1,23 @@
+{
+    "name": "PokemonApiOpgave",
+    "version": "1.0.0",
+    "description": "Opgave med brug af Pokemon's API",
+    "main": "index.js",
+    "scripts": {
+        "sass": "node-sass -o css scss -w"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/8700theis/PokemonApiOpgave.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/8700theis/PokemonApiOpgave/issues"
+    },
+    "homepage": "https://github.com/8700theis/PokemonApiOpgave#readme",
+    "dependencies": {
+        "node-sass": "^5.0.0"
+    }
+}

@@ -19,5 +19,8 @@
     "homepage": "https://github.com/8700theis/PokemonApiOpgave#readme",
     "dependencies": {
         "node-sass": "^5.0.0"
+    },
+    "devDependencies": {
+        "babel-install": "2.1.0"
     }
 }

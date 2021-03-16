@@ -60,6 +60,7 @@
                 position: absolute;
                 top: 50%;
                 transform: translate(0, -50%);
+                visibility: hidden;
                 span {
                     color: #1F51FF;
                 }
@@ -128,4 +129,12 @@
             }
         }
     }
+}
+
+.picked {
+    opacity: 0.5;
+}
+
+.show {
+    visibility: visible;
 }

@@ -1,4 +1,5 @@
 let pokemonList = [];
+let trainerList = [];
 let pokemonImages = document.querySelectorAll(".content-pokemons-container-item img");
 
 const insetTrainerName = () => {
@@ -14,16 +15,16 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then((response) => response.json())
         .then((data) => {
-            /*             thisPokemon["imgSprite"] = data.sprites.front_default;
-
-                        thisPokemon.hpBS = data.stats[0].base_stat;
-                        thisPokemon.attBS = data.stats[1].base_stat;
-                        thisPokemon.defBS = data.stats[2].base_stat;
-                        thisPokemon.moves[0].moveName = data.moves[moveOne].move.name;
-                        thisPokemon.moves[1].moveName = data.moves[moveTwo].move.name;
-                        thisPokemon.moves[2].moveName = data.moves[moveThree].move.name;
-                        thisPokemon.moves[3].moveName = data.moves[moveFour].move.name;
-                        */
+            /*             
+            thisPokemon["imgSprite"] = data.sprites.front_default;
+            thisPokemon.hpBS = data.stats[0].base_stat;
+            thisPokemon.attBS = data.stats[1].base_stat;
+            thisPokemon.defBS = data.stats[2].base_stat;
+            thisPokemon.moves[0].moveName = data.moves[moveOne].move.name;
+            thisPokemon.moves[1].moveName = data.moves[moveTwo].move.name;
+            thisPokemon.moves[2].moveName = data.moves[moveThree].move.name;
+            thisPokemon.moves[3].moveName = data.moves[moveFour].move.name;
+            */
 
             let movesUrlList = [];
 
@@ -61,6 +62,42 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
 const insetPokemonImage = () => {
     for (let i = 0; i < pokemonImages.length; i++) {
         pokemonImages[i].src = pokemonList[i].imgSprite;
+        pokemonImages[i].alt = pokemonList[i].name;
+
+    }
+}
+
+const addEventOnPokeImages = () => {
+    for (let i = 0; i < pokemonImages.length; i++) {
+        pokemonImages[i].addEventListener("click", addToTrainerList);
+    }
+}
+
+const addToTrainerList = (e) => {
+    let pokeName = e.target.alt;
+    for (let i = 0; i < pokemonList.length; i++) {
+        if (pokemonList[i].name == pokeName) {
+            trainerList.push(pokemonList[i]);
+            pokemonImages[i].removeEventListener("click", addToTrainerList);
+            pokemonImages[i].classList.add("picked");
+            updateTrainerList();
+        }
+    }
+    if (trainerList.length == 6) {
+        for (let i = 0; i < pokemonImages.length; i++) {
+            pokemonImages[i].removeEventListener("click", addToTrainerList);
+            pokemonImages[i].classList.add("picked");
+        }
+    }
+}
+
+const updateTrainerList = () => {
+    let trainerPokeName = document.querySelectorAll(".content-team-pokemon-name");
+    let trainerPokeLvl = document.querySelectorAll(".content-team-pokemon-lvl");
+    let spanTag = document.createElement("SPAN");
+    for (let i = 0; i < trainerList.length; i++) {
+        trainerPokeName[i].innerText = trainerList[i].name;
+        trainerPokeLvl[i].classList.add("show");
     }
 }
 
@@ -79,4 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
     getPokemon("lucario", 0, 1, 2, 30);
     getPokemon("tyranitar", 0, 1, 2, 30);
     setTimeout(insetPokemonImage, 1000)
+    setTimeout(addEventOnPokeImages, 1000);
 });

@@ -86,7 +86,8 @@ html {
         grid-column: 2 / 3;
         position: absolute;
         top: 50%;
-        transform: translate(0, -50%); }
+        transform: translate(0, -50%);
+        visibility: hidden; }
         .content-team-pokemon-lvl span {
           color: #1F51FF; }
   .content-arrows {
@@ -142,3 +143,9 @@ html {
       border-radius: 2rem; }
       .content-pokemons-btn:hover {
         background-color: #f02d2d; }
+
+.picked {
+  opacity: 0.5; }
+
+.show {
+  visibility: visible; }

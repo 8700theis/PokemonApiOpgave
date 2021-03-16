@@ -1,4 +1,5 @@
 let pokemonList = [];
+let pokemonImages = document.querySelectorAll(".content-pokemons-container-item img");
 
 const insetTrainerName = () => {
     const trainerName = localStorage.getItem("trainer-name");
@@ -58,10 +59,7 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
 }
 
 const insetPokemonImage = () => {
-    let pokemonImages = document.querySelectorAll(".content-pokemons-container-item img");
-
     for (let i = 0; i < pokemonImages.length; i++) {
-
         pokemonImages[i].src = pokemonList[i].imgSprite;
     }
 }
@@ -80,5 +78,5 @@ document.addEventListener('DOMContentLoaded', () => {
     getPokemon("kyogre", 0, 1, 2, 30);
     getPokemon("lucario", 0, 1, 2, 30);
     getPokemon("tyranitar", 0, 1, 2, 30);
-    setTimeout(insetPokemonImage, 500)
+    setTimeout(insetPokemonImage, 1000)
 });

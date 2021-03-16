@@ -94,7 +94,7 @@
             transform: translate(-50%, -50%);
             height: 70%;
             width: 85%;
-            border: 2px solid lighten(color(black), 80%);
+            /*             border: 2px solid lighten(color(black), 80%); */
             margin-top: 2rem;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -104,7 +104,6 @@
             &-item {
                 width: 100px;
                 height: 100px;
-                background-color: #1F51FF;
                 cursor: pointer;
                 img {
                     width: 100%;

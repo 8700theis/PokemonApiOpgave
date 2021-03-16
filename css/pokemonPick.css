@@ -114,7 +114,7 @@ html {
       transform: translate(-50%, -50%);
       height: 70%;
       width: 85%;
-      border: 2px solid #cccccc;
+      /*             border: 2px solid lighten(color(black), 80%); */
       margin-top: 2rem;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -124,7 +124,6 @@ html {
       .content-pokemons-container-item {
         width: 100px;
         height: 100px;
-        background-color: #1F51FF;
         cursor: pointer; }
         .content-pokemons-container-item img {
           width: 100%;

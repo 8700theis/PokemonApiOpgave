@@ -123,12 +123,26 @@ const addToPokemonList = (e) => {
 
         }
     }
-    for (let i = 0; i < pokemonImages.length; i++) {
-        if (pokemonImages[i].alt == trainerPokeName) {
+
+
+    if (trainerList.length == 5) {
+        console.log("Jackpot");
+        for (let i = 0; i < pokemonImages.length; i++) {
             pokemonImages[i].addEventListener("click", addToTrainerList);
             pokemonImages[i].classList.remove("picked");
         }
+        for (let i = 0; i < pokemonImages.length; i++) {
+
+        }
+    } else {
+        for (let i = 0; i < pokemonImages.length; i++) {
+            if (pokemonImages[i].alt == trainerPokeName) {
+                pokemonImages[i].addEventListener("click", addToTrainerList);
+                pokemonImages[i].classList.remove("picked");
+            }
+        }
     }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,6 +1,9 @@
 let pokemonList = [];
 let trainerList = [];
 let pokemonImages = document.querySelectorAll(".content-pokemons-container-item img");
+let trainerPokemons = document.querySelectorAll(".content-team-pokemon");
+let trainerPokeName = document.querySelectorAll(".content-team-pokemon-name");
+let trainerPokeLvl = document.querySelectorAll(".content-team-pokemon-lvl");
 
 const insetTrainerName = () => {
     const trainerName = localStorage.getItem("trainer-name");
@@ -92,12 +95,39 @@ const addToTrainerList = (e) => {
 }
 
 const updateTrainerList = () => {
-    let trainerPokeName = document.querySelectorAll(".content-team-pokemon-name");
-    let trainerPokeLvl = document.querySelectorAll(".content-team-pokemon-lvl");
-    let spanTag = document.createElement("SPAN");
+    for (let i = 0; i < trainerPokemons.length; i++) {
+        if (trainerPokeLvl[i].classList.contains("show")) {
+            trainerPokeLvl[i].classList.remove("show");
+            trainerPokeName[i].innerText = "";
+        }
+    }
     for (let i = 0; i < trainerList.length; i++) {
         trainerPokeName[i].innerText = trainerList[i].name;
         trainerPokeLvl[i].classList.add("show");
+
+    }
+}
+
+const addEventOnTrainerPokemons = () => {
+    for (let i = 0; i < trainerPokemons.length; i++) {
+        trainerPokemons[i].addEventListener("click", addToPokemonList);
+    }
+}
+
+const addToPokemonList = (e) => {
+    let trainerPokeName = e.target.firstChild.nextElementSibling.innerText;
+    for (let i = 0; i < trainerList.length; i++) {
+        if (trainerList[i].name == trainerPokeName) {
+            trainerList.splice(i, 1);
+            updateTrainerList();
+
+        }
+    }
+    for (let i = 0; i < pokemonImages.length; i++) {
+        if (pokemonImages[i].alt == trainerPokeName) {
+            pokemonImages[i].addEventListener("click", addToTrainerList);
+            pokemonImages[i].classList.remove("picked");
+        }
     }
 }
 
@@ -117,4 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
     getPokemon("tyranitar", 0, 1, 2, 30);
     setTimeout(insetPokemonImage, 1000)
     setTimeout(addEventOnPokeImages, 1000);
+    setTimeout(addEventOnTrainerPokemons, 1000);
 });

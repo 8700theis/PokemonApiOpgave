@@ -1,0 +1,13 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70% 30%;
+    &-fight {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    &-bottom {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+}

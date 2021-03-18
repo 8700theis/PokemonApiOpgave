@@ -18,17 +18,6 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then((response) => response.json())
         .then((data) => {
-            /*             
-            thisPokemon["imgSprite"] = data.sprites.front_default;
-            thisPokemon.hpBS = data.stats[0].base_stat;
-            thisPokemon.attBS = data.stats[1].base_stat;
-            thisPokemon.defBS = data.stats[2].base_stat;
-            thisPokemon.moves[0].moveName = data.moves[moveOne].move.name;
-            thisPokemon.moves[1].moveName = data.moves[moveTwo].move.name;
-            thisPokemon.moves[2].moveName = data.moves[moveThree].move.name;
-            thisPokemon.moves[3].moveName = data.moves[moveFour].move.name;
-            */
-
             let movesUrlList = [];
 
             movesUrlList[0] = data.moves[moveOne].move.url;

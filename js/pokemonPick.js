@@ -1,9 +1,14 @@
 let pokemonList = [];
 let trainerList = [];
-let pokemonImages = document.querySelectorAll(".content-pokemons-container-item img");
+
+let pokemonsContainer = document.querySelector(".content-pokemons-container");
+let pokemonImages = "";
+
 let trainerPokemons = document.querySelectorAll(".content-team-pokemon");
 let trainerPokeName = document.querySelectorAll(".content-team-pokemon-name");
 let trainerPokeLvl = document.querySelectorAll(".content-team-pokemon-lvl");
+
+const figtBtn = document.querySelector(".content-pokemons-btn");
 
 const insetTrainerName = () => {
     const trainerName = localStorage.getItem("trainer-name");
@@ -11,10 +16,6 @@ const insetTrainerName = () => {
 }
 
 function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
-
-
-
-
     fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then((response) => response.json())
         .then((data) => {
@@ -29,6 +30,7 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
                 name: name,
                 lvl: 50,
                 imgSprite: data.sprites.front_default,
+                imgSpriteBack: data.sprites.back_default,
                 hpBS: data.stats[0].base_stat,
                 attBS: data.stats[1].base_stat,
                 defBS: data.stats[2].base_stat,
@@ -47,15 +49,30 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
                     })
             }
             pokemonList.push(thisPokemon);
+
+
         });
 
 }
 
 const insetPokemonImage = () => {
+    for (let i = 0; i < pokemonList.length; i++) {
+
+        /* Generere HTML for pokemon images DIV */
+        let pokemonDiv = document.createElement("DIV");
+        pokemonDiv.classList.add("content-pokemons-container-item");
+        pokemonsContainer.appendChild(pokemonDiv);
+        /* Generere HTML for pokemon images IMG*/
+        let pokemonImg = document.createElement("IMG");
+        pokemonImg.classList.add("Pokemon-image");
+        pokemonDiv.appendChild(pokemonImg);
+    }
+
+    pokemonImages = document.querySelectorAll(".content-pokemons-container-item img");
+
     for (let i = 0; i < pokemonImages.length; i++) {
         pokemonImages[i].src = pokemonList[i].imgSprite;
         pokemonImages[i].alt = pokemonList[i].name;
-
     }
 }
 
@@ -112,10 +129,7 @@ const addToPokemonList = (e) => {
 
         }
     }
-
-
     if (trainerList.length == 5) {
-        console.log("Jackpot");
         for (let i = 0; i < pokemonImages.length; i++) {
             pokemonImages[i].addEventListener("click", addToTrainerList);
             pokemonImages[i].classList.remove("picked");
@@ -136,11 +150,20 @@ const addToPokemonList = (e) => {
             }
         }
     }
+}
 
+const addEventOnFightBtn = () => {
+    figtBtn.addEventListener("click", (e) => {
+        /* 
+        Jeg gemmer min trainerList som er mit array af pokemons
+        */
+        localStorage.setItem("trainer-pokemon-list", JSON.stringify(trainerList));
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     insetTrainerName();
+    addEventOnFightBtn();
     getPokemon("charizard", 0, 1, 2, 37);
     getPokemon("machamp", 0, 1, 2, 77);
     getPokemon("gengar", 0, 1, 2, 77);

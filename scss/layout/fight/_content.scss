@@ -251,14 +251,39 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 200;
         background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        transition: all .3s;
+        &-back-btn {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            padding: 1.5rem 2.5rem;
+            background-color: color(poke-red);
+            color: #fff;
+            border-radius: 2rem;
+            font-size: size(xs);
+            cursor: pointer;
+            transition: all .3s;
+            &:hover {
+                background-color: lighten(color(poke-red), 15%);
+            }
+        }
         &-item {
             cursor: pointer;
-            width: 400px;
+            width: 350px;
             margin: 0 auto;
             display: flex;
             align-items: center;
+            border: 2px solid lighten(color(black), 80%);
+            padding: 0 10rem;
+            background-color: transparent;
+            transition: all .3s;
+            &:hover {
+                background-color: lighten(color(black), 80%);
+            }
             img {
                 margin-right: 2rem;
             }
@@ -269,15 +294,46 @@
                 &-namelvl {
                     display: flex;
                     justify-content: space-between;
+                    align-items: center;
                     margin-bottom: 1rem;
+                    .pokemon-name {
+                        font-size: size(xs)- 0.3rem;
+                        font-weight: 600;
+                    }
                 }
                 &-hp {
                     display: flex;
+                    .hp-text {
+                        margin-right: 2rem;
+                    }
                     div {
                         display: flex;
+                        .hp-value {
+                            &:first-child {
+                                color: color(poke-red);
+                            }
+                            &:nth-child(2) {
+                                color: color(black);
+                            }
+                            &:nth-child(3) {
+                                color: color(light-blue);
+                            }
+                        }
                     }
                 }
             }
         }
     }
+}
+
+.show-poke-list {
+    z-index: 200;
+    opacity: 1;
+    display: flex;
+}
+
+.hide-poke-list {
+    z-index: -1;
+    opacity: 0;
+    display: none;
 }

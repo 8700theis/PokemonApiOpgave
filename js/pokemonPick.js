@@ -1,5 +1,6 @@
 let pokemonList = [];
 let trainerList = [];
+let mewtwo = [];
 
 let pokemonsContainer = document.querySelector(".content-pokemons-container");
 let pokemonImages = "";
@@ -38,7 +39,10 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
                     { moveName: data.moves[moveTwo].move.name, movePower: 0 },
                     { moveName: data.moves[moveThree].move.name, movePower: 0 },
                     { moveName: data.moves[moveFour].move.name, movePower: 0 }
-                ]
+                ],
+                HP: 0,
+                currentHP: 0,
+                attack: 0
             };
 
             for (let i = 0; i < movesUrlList.length; i++) {
@@ -53,6 +57,45 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
 
         });
 
+}
+
+function fetchMewtwo(moveOne, moveTwo, moveThree, moveFour) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/mewtwo`)
+        .then((response) => response.json())
+        .then((data) => {
+            let movesUrlList = [];
+
+            movesUrlList[0] = data.moves[moveOne].move.url;
+            movesUrlList[1] = data.moves[moveTwo].move.url;
+            movesUrlList[2] = data.moves[moveThree].move.url;
+            movesUrlList[3] = data.moves[moveFour].move.url;
+
+            var thisPokemon = {
+                name: "mewtwo",
+                lvl: 70,
+                imgSprite: data.sprites.front_default,
+                imgSpriteBack: data.sprites.back_default,
+                hpBS: data.stats[0].base_stat,
+                attBS: data.stats[1].base_stat,
+                defBS: data.stats[2].base_stat,
+                moves: [{ moveName: data.moves[moveOne].move.name, movePower: 0 },
+                    { moveName: data.moves[moveTwo].move.name, movePower: 0 },
+                    { moveName: data.moves[moveThree].move.name, movePower: 0 },
+                    { moveName: data.moves[moveFour].move.name, movePower: 0 }
+                ],
+                HP: 0,
+                attack: 0
+            };
+
+            for (let i = 0; i < movesUrlList.length; i++) {
+                fetch(movesUrlList[i])
+                    .then((moveResponse) => moveResponse.json())
+                    .then((moveData) => {
+                        thisPokemon.moves[i].movePower = moveData.power;
+                    })
+            }
+            mewtwo.push(thisPokemon);
+        });
 }
 
 const insetPokemonImage = () => {
@@ -161,6 +204,10 @@ const addEventOnFightBtn = () => {
     });
 }
 
+const saveMewtwo = () => {
+    localStorage.setItem("mewtwo", JSON.stringify(mewtwo));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     insetTrainerName();
     addEventOnFightBtn();
@@ -176,7 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
     getPokemon("kyogre", 0, 1, 2, 30);
     getPokemon("lucario", 0, 1, 2, 30);
     getPokemon("tyranitar", 0, 1, 2, 30);
+    fetchMewtwo(0, 1, 2, 23);
     setTimeout(insetPokemonImage, 1000)
     setTimeout(addEventOnPokeImages, 1000);
     setTimeout(addEventOnTrainerPokemons, 1000);
+    setTimeout(saveMewtwo, 1000)
 });

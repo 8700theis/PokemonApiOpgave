@@ -91,7 +91,7 @@ html {
             margin-right: 2rem;
             font-size: 1.6rem; }
           .content-fight-top-info-hp .hp-value {
-            color: #2f48ff;
+            color: #1F51FF;
             font-size: 1.6rem; }
     .content-fight-bottom {
       grid-column: 1 / 2;
@@ -139,7 +139,7 @@ html {
             margin-right: 2rem;
             font-size: 1.6rem; }
           .content-fight-bottom-info-hp .hp-value {
-            color: #2f48ff;
+            color: #1F51FF;
             font-size: 1.6rem; }
             .content-fight-bottom-info-hp .hp-value:first-child {
               color: #ee1515; }
@@ -241,14 +241,36 @@ html {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 200;
-    background-color: #fff; }
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all .3s; }
+    .content-pokemon-list-back-btn {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      padding: 1.5rem 2.5rem;
+      background-color: #ee1515;
+      color: #fff;
+      border-radius: 2rem;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: all .3s; }
+      .content-pokemon-list-back-btn:hover {
+        background-color: #f35c5c; }
     .content-pokemon-list-item {
       cursor: pointer;
-      width: 400px;
+      width: 350px;
       margin: 0 auto;
       display: flex;
-      align-items: center; }
+      align-items: center;
+      border: 2px solid #cccccc;
+      padding: 0 10rem;
+      background-color: transparent;
+      transition: all .3s; }
+      .content-pokemon-list-item:hover {
+        background-color: #cccccc; }
       .content-pokemon-list-item img {
         margin-right: 2rem; }
       .content-pokemon-list-item-info {
@@ -258,8 +280,30 @@ html {
         .content-pokemon-list-item-info-namelvl {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           margin-bottom: 1rem; }
+          .content-pokemon-list-item-info-namelvl .pokemon-name {
+            font-size: 1.3rem;
+            font-weight: 600; }
         .content-pokemon-list-item-info-hp {
           display: flex; }
+          .content-pokemon-list-item-info-hp .hp-text {
+            margin-right: 2rem; }
           .content-pokemon-list-item-info-hp div {
             display: flex; }
+            .content-pokemon-list-item-info-hp div .hp-value:first-child {
+              color: #ee1515; }
+            .content-pokemon-list-item-info-hp div .hp-value:nth-child(2) {
+              color: #000; }
+            .content-pokemon-list-item-info-hp div .hp-value:nth-child(3) {
+              color: #1F51FF; }
+
+.show-poke-list {
+  z-index: 200;
+  opacity: 1;
+  display: flex; }
+
+.hide-poke-list {
+  z-index: -1;
+  opacity: 0;
+  display: none; }

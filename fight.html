@@ -22,18 +22,18 @@
                     <section>
                         <div class="content-fight-top-info">
                             <div class="content-fight-top-info-namelvl">
-                                <p class="pokemon-name">Mewtwo</p>
-                                <p class="pokemon-lvl">lvl. 70</p>
+                                <p class="pokemon-name" id="boss-name"></p>
+                                <p class="pokemon-lvl" id="boss-lvl"></p>
                             </div>
                             <div class="content-fight-top-info-hp">
                                 <p class="hp-text">HP:</p>
-                                <p class="hp-value">300</p>
+                                <p class="hp-value" id="boss-hp"></p>
                             </div>
                         </div>
                     </section>
 
                     <div class="content-fight-top-pokemon">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="">
+                        <img src="" alt="">
                     </div>
 
                 </div>
@@ -43,21 +43,21 @@
                 <div class="content-fight-bottom">
 
                     <div class="content-fight-bottom-pokemon">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png" alt="">
+                        <img src="" alt="">
                     </div>
 
                     <section>
                         <div class="content-fight-bottom-info">
                             <div class="content-fight-bottom-info-namelvl">
-                                <p class="pokemon-name">Crarizard</p>
-                                <p class="pokemon-lvl">lvl. 50</p>
+                                <p class="pokemon-name" id="current-name"></p>
+                                <p class="pokemon-lvl" id="current-lvl"></p>
                             </div>
                             <div class="content-fight-bottom-info-hp">
                                 <p class="hp-text">HP</p>
                                 <div>
-                                    <p class="hp-value">300</p>
+                                    <p class="hp-value " id="current-hp"></p>
                                     <p class="hp-value"> / </p>
-                                    <p class="hp-value starting-hp">300</p>
+                                    <p class="hp-value current-starting-hp"></p>
                                 </div>
                             </div>
                         </div>
@@ -110,9 +110,13 @@
                 </div>
             </div>
 
-            <div class="content-pokemon-list">
-                <div class="content-pokemon-list-item">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="">
+            <!-- POKEMON LIST START -->
+            <div class="content-pokemon-list hide-poke-list">
+                <!-- Back to fight scene BTN -->
+                <p class="content-pokemon-list-back-btn">Back</p>
+
+                <!-- <div class="content-pokemon-list-item">
+                    <img src="" alt="">
                     <div class="content-pokemon-list-item-info">
                         <div class="content-pokemon-list-item-info-namelvl">
                             <p class="pokemon-name">Charizard</p>
@@ -127,9 +131,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
+            <!-- POKEMON LIST END -->
 
         </div>
     </div>

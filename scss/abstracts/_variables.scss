@@ -5,7 +5,8 @@
 
 $colors: ( light-white: rgb(241, 241, 241),
 black: #000,
-poke-red: #ee1515);
+poke-red: #ee1515,
+light-blue: #2f48ff);
 @function color($color-name) {
     @return map-get($colors,
     $color-name);

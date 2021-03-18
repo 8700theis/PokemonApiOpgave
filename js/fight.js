@@ -15,7 +15,7 @@ function fetchMewtwo(moveOne, moveTwo, moveThree, moveFour) {
 
             var thisPokemon = {
                 name: "mewtwo",
-                lvl: 50,
+                lvl: 70,
                 imgSprite: data.sprites.front_default,
                 imgSpriteBack: data.sprites.back_default,
                 hpBS: data.stats[0].base_stat,
@@ -43,5 +43,5 @@ function fetchMewtwo(moveOne, moveTwo, moveThree, moveFour) {
 document.addEventListener('DOMContentLoaded', () => {
     fetchMewtwo(0, 1, 2, 66);
     setTimeout(console.log(mewtwo), 10);
-
+    console.log(trainerList);
 });

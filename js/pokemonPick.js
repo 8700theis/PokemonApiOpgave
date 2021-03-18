@@ -131,8 +131,13 @@ const addToPokemonList = (e) => {
             pokemonImages[i].addEventListener("click", addToTrainerList);
             pokemonImages[i].classList.remove("picked");
         }
-        for (let i = 0; i < pokemonImages.length; i++) {
-
+        for (let i = 0; i < trainerList.length; i++) {
+            for (let j = 0; j < pokemonList.length; j++) {
+                if (trainerList[i].name == pokemonList[j].name) {
+                    pokemonImages[j].removeEventListener("click", addToTrainerList);
+                    pokemonImages[j].classList.add("picked");
+                }
+            }
         }
     } else {
         for (let i = 0; i < pokemonImages.length; i++) {

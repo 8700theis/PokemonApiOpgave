@@ -35,14 +35,13 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
                 hpBS: data.stats[0].base_stat,
                 attBS: data.stats[1].base_stat,
                 defBS: data.stats[2].base_stat,
-                moves: [{ moveName: data.moves[moveOne].move.name, movePower: 0 },
-                    { moveName: data.moves[moveTwo].move.name, movePower: 0 },
-                    { moveName: data.moves[moveThree].move.name, movePower: 0 },
-                    { moveName: data.moves[moveFour].move.name, movePower: 0 }
+                moves: [{ moveName: data.moves[moveOne].move.name, movePower: 0, moveDamage: 0 },
+                    { moveName: data.moves[moveTwo].move.name, movePower: 0, moveDamage: 0 },
+                    { moveName: data.moves[moveThree].move.name, movePower: 0, moveDamage: 0 },
+                    { moveName: data.moves[moveFour].move.name, movePower: 0, moveDamage: 0 }
                 ],
                 HP: 0,
-                currentHP: 0,
-                attack: 0
+                currentHP: 0
             };
 
             for (let i = 0; i < movesUrlList.length; i++) {
@@ -78,13 +77,12 @@ function fetchMewtwo(moveOne, moveTwo, moveThree, moveFour) {
                 hpBS: data.stats[0].base_stat,
                 attBS: data.stats[1].base_stat,
                 defBS: data.stats[2].base_stat,
-                moves: [{ moveName: data.moves[moveOne].move.name, movePower: 0 },
-                    { moveName: data.moves[moveTwo].move.name, movePower: 0 },
-                    { moveName: data.moves[moveThree].move.name, movePower: 0 },
-                    { moveName: data.moves[moveFour].move.name, movePower: 0 }
+                moves: [{ moveName: data.moves[moveOne].move.name, movePower: 0, moveDamage: 0 },
+                    { moveName: data.moves[moveTwo].move.name, movePower: 0, moveDamage: 0 },
+                    { moveName: data.moves[moveThree].move.name, movePower: 0, moveDamage: 0 },
+                    { moveName: data.moves[moveFour].move.name, movePower: 0, moveDamage: 0 }
                 ],
-                HP: 0,
-                attack: 0
+                HP: 0
             };
 
             for (let i = 0; i < movesUrlList.length; i++) {

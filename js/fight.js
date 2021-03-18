@@ -21,6 +21,7 @@ let currentPokeName = document.querySelector("#current-name");
 let currentPokeLvl = document.querySelector("#current-lvl");
 let currentPokeHp = document.querySelector("#current-hp");
 let currentPokeStartingHp = document.querySelector(".current-starting-hp");
+let move = document.querySelectorAll(".move");
 /* Current fighting pokemons elements END */
 
 /* 
@@ -52,7 +53,41 @@ const calculateHP = () => {
 }
 
 const calculateAttack = () => {
+    for (let i = 0; i < trainerList.length; i++) {
+        let currentpokelvl = trainerList[i].lvl;
+        let currentpokeAttBS = trainerList[i].attBS;
+        let mewtwoDefenceBS = mewtwo[0].defBS;
+        let movePower = 0;
+        let moveAttackValue = 0
+        for (let j = 0; j < trainerList[i].moves.length; j++) {
+            movePower = trainerList[i].moves[j].movePower;
+            if (movePower === null) {
+                movePower = 0;
+                moveAttackValue = 0;
+            } else {
+                moveAttackValue = Math.ceil(((((2 * currentpokelvl / 5 + 2) * currentpokeAttBS * movePower) / mewtwoDefenceBS) / 50) + 2);
+            }
+            trainerList[i].moves[j].moveDamage = moveAttackValue;
+        }
+    }
+}
 
+const calculateMewtwoAttack = () => {
+    let bosspokelvl = mewtwo[0].lvl;
+    let bospokeAttBS = mewtwo[0].attBS;
+    let currentPokemonDefenceBS = currentFightingPokemon[0].defBS;
+    let movePower = 0;
+    let moveAttackValue = 0
+    for (let i = 0; i < mewtwo[0].moves.length; i++) {
+        movePower = mewtwo[0].moves[i].movePower;
+        if (movePower === null) {
+            movePower = 0;
+            moveAttackValue = 0;
+        } else {
+            moveAttackValue = Math.ceil(((((2 * bosspokelvl / 5 + 2) * bospokeAttBS * movePower) / currentPokemonDefenceBS) / 50) + 2);
+        }
+        mewtwo[0].moves[i].moveDamage = moveAttackValue;
+    }
 }
 
 const insetBossPokemonInfo = () => {
@@ -68,6 +103,10 @@ const insetCurrentPokemonInfo = () => {
     currentPokeLvl.innerText = `lvl. ${currentFightingPokemon[0].lvl}`;
     currentPokeStartingHp.innerText = currentFightingPokemon[0].HP;
     currentPokeHp.innerText = currentFightingPokemon[0].currentHP;
+
+    for (let i = 0; i < move.length; i++) {
+        move[i].innerText = currentFightingPokemon[0].moves[i].moveName;
+    }
 }
 
 /* EventListeners START */
@@ -88,12 +127,19 @@ const addEventOnPokemonsInBag = () => {
     /* EventListeners END */
 
 const chooseThisPokemon = (e) => {
-    let pickedPokemonName = e.target.children[0].children[0].innerText;
+    let pickedPokemonName = e.target.id;
     let pickedPokemon = "";
     for (let i = 0; i < trainerList.length; i++) {
-
+        if (trainerList[i].name == pickedPokemonName) {
+            pickedPokemon = trainerList[i];
+            currentFightingPokemon.pop();
+            currentFightingPokemon.push(pickedPokemon);
+            insetCurrentPokemonInfo();
+            calculateMewtwoAttack();
+            hidePokemonList();
+            console.log(mewtwo[0].moves[0].moveDamage);
+        }
     }
-    console.log();
 }
 
 const showPokemonList = () => {
@@ -112,6 +158,7 @@ const insetPokemons = () => {
     for (let i = 0; i < trainerList.length; i++) {
         let pokeWrapper = document.createElement("DIV");
         pokeWrapper.classList.add("content-pokemon-list-item");
+        pokeWrapper.setAttribute("id", trainerList[i].name);
         pokeBag.appendChild(pokeWrapper);
 
         let pokemonImg = document.createElement("IMG");
@@ -176,10 +223,11 @@ const insetPokemons = () => {
 document.addEventListener('DOMContentLoaded', () => {
     calculateHP();
     calculateAttack();
+    calculateMewtwoAttack();
     insetBossPokemonInfo();
     insetCurrentPokemonInfo();
     insetPokemons();
+    addEventOnPokemonsInBag();
     addEventOnPokemonBtn();
     addEventOnBackBtn();
-    addEventOnPokemonsInBag();
 });

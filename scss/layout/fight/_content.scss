@@ -286,37 +286,47 @@
             }
             img {
                 margin-right: 2rem;
+                pointer-events: none
             }
             &-info {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
+                pointer-events: none;
                 &-namelvl {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     margin-bottom: 1rem;
+                    pointer-events: none;
                     .pokemon-name {
                         font-size: size(xs)- 0.3rem;
                         font-weight: 600;
+                        pointer-events: none;
                     }
                 }
                 &-hp {
                     display: flex;
+                    pointer-events: none;
                     .hp-text {
                         margin-right: 2rem;
+                        pointer-events: none;
                     }
                     div {
                         display: flex;
+                        pointer-events: none;
                         .hp-value {
                             &:first-child {
                                 color: color(poke-red);
+                                pointer-events: none;
                             }
                             &:nth-child(2) {
                                 color: color(black);
+                                pointer-events: none;
                             }
                             &:nth-child(3) {
                                 color: color(light-blue);
+                                pointer-events: none;
                             }
                         }
                     }

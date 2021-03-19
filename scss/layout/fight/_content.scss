@@ -150,7 +150,6 @@
             &-overlay {
                 width: 100%;
                 height: 100%;
-                display: none;
                 align-items: center;
                 position: absolute;
                 top: 0;
@@ -205,13 +204,11 @@
                         display: flex;
                         align-items: center;
                         justify-content: space-around;
+                        pointer-events: none;
                         .move {
                             font-weight: 900;
                             font-size: size(xs) - 0.4rem;
-                        }
-                        .move-counter {
-                            font-weight: 100;
-                            font-size: size(xs) - 0.6rem;
+                            pointer-events: none;
                         }
                     }
                 }
@@ -334,6 +331,38 @@
             }
         }
     }
+    &-resultpage {
+        position: absolute;
+        height: 200px;
+        width: 570px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -200;
+        background-color: #fff;
+        border: 5px solid color(black);
+        padding: 5rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-evenly;
+        &-text {
+            line-height: 30px;
+        }
+        &-btn {
+            align-self: center;
+            text-decoration: none;
+            background-color: color(poke-red);
+            color: #fff;
+            letter-spacing: 2px;
+            padding: 1.5rem 3rem;
+            font-weight: 600;
+            font-size: size(xs);
+            border-radius: 2.5rem;
+            &:hover {
+                background-color: lighten(color(poke-red), 15%);
+            }
+        }
+    }
 }
 
 .show-poke-list {
@@ -346,4 +375,21 @@
     z-index: -1;
     opacity: 0;
     display: none;
+}
+
+.show-overlay {
+    display: flex;
+}
+
+.hide-overlay {
+    display: none;
+}
+
+.pokemon-dead {
+    opacity: 0.5;
+}
+
+.show-resultpage {
+    display: flex;
+    z-index: 1000;
 }

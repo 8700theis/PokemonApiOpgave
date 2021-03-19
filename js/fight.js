@@ -1,7 +1,10 @@
 let trainerList = JSON.parse(localStorage.getItem("trainer-pokemon-list"));
 let mewtwo = JSON.parse(localStorage.getItem("mewtwo"));
 
-const pokemonBtn = document.querySelector(".content-bottom-right-pokemon");
+const pokemonBtn = document.querySelector(".content-bottom-right div:last-child");
+const fightBtn = document.querySelector(".content-bottom-right div:first-child");
+
+const resultpage = document.querySelector(".content-resultpage");
 
 /* Poke bag elements START */
 let pokemonBag = document.querySelector(".content-pokemon-list");
@@ -21,7 +24,11 @@ let currentPokeName = document.querySelector("#current-name");
 let currentPokeLvl = document.querySelector("#current-lvl");
 let currentPokeHp = document.querySelector("#current-hp");
 let currentPokeStartingHp = document.querySelector(".current-starting-hp");
+let movesWrapper = document.querySelectorAll(".moves-move-wrapper");
 let move = document.querySelectorAll(".move");
+
+let overlay = document.querySelector(".content-bottom-left-overlay");
+let overlayHeading = document.querySelector(".content-bottom-left-overlay-heading");
 /* Current fighting pokemons elements END */
 
 /* 
@@ -98,18 +105,50 @@ const insetBossPokemonInfo = () => {
 }
 
 const insetCurrentPokemonInfo = () => {
+    overlayHeading.innerText = `What will ${currentFightingPokemon[0].name} do?`;
+    if (overlay.classList.contains("hide-overlay")) {
+        overlay.classList.add("show-overlay");
+        overlay.classList.remove("hide-overlay");
+    } else {
+        overlay.classList.add("show-overlay");
+    }
+
     currentPokeImg.src = currentFightingPokemon[0].imgSpriteBack;
     currentPokeName.innerText = currentFightingPokemon[0].name;
     currentPokeLvl.innerText = `lvl. ${currentFightingPokemon[0].lvl}`;
     currentPokeStartingHp.innerText = currentFightingPokemon[0].HP;
     currentPokeHp.innerText = currentFightingPokemon[0].currentHP;
-
     for (let i = 0; i < move.length; i++) {
         move[i].innerText = currentFightingPokemon[0].moves[i].moveName;
     }
 }
 
 /* EventListeners START */
+
+const addEventOnFightBtn = () => {
+    fightBtn.addEventListener("click", showMoves);
+}
+
+const addEventOnMoves = () => {
+    for (let i = 0; i < movesWrapper.length; i++) {
+        movesWrapper[i].addEventListener("click", (e) => {
+            let clickedMoveName = e.target.children[0].children[0].innerText;
+            for (let i = 0; i < currentFightingPokemon[0].moves.length; i++) {
+                if (currentFightingPokemon[0].moves[i].moveName == clickedMoveName) {
+                    mewtwo[0].HP = mewtwo[0].HP - currentFightingPokemon[0].moves[i].moveDamage;
+                    if (mewtwo[0].HP <= 0) {
+                        mewtwo[0].HP = 0;
+                        bossPokeImg.classList.add("pokemon-dead");
+                        resultpage.classList.add("show-resultpage");
+                        pokemonBtn.removeEventListener("click", showPokemonList);
+                    }
+                    insetBossPokemonInfo();
+                }
+            }
+        });
+    }
+}
+
 const addEventOnPokemonBtn = () => {
     pokemonBtn.addEventListener("click", showPokemonList);
 }
@@ -126,6 +165,13 @@ const addEventOnPokemonsInBag = () => {
     }
     /* EventListeners END */
 
+const showMoves = () => {
+    if (overlay.classList.contains("show-overlay")) {
+        overlay.classList.add("hide-overlay");
+        overlay.classList.remove("show-overlay");
+    }
+}
+
 const chooseThisPokemon = (e) => {
     let pickedPokemonName = e.target.id;
     let pickedPokemon = "";
@@ -137,7 +183,6 @@ const chooseThisPokemon = (e) => {
             insetCurrentPokemonInfo();
             calculateMewtwoAttack();
             hidePokemonList();
-            console.log(mewtwo[0].moves[0].moveDamage);
         }
     }
 }
@@ -227,7 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
     insetBossPokemonInfo();
     insetCurrentPokemonInfo();
     insetPokemons();
-    addEventOnPokemonsInBag();
     addEventOnPokemonBtn();
+    addEventOnFightBtn();
+    addEventOnMoves();
+    addEventOnPokemonsInBag();
     addEventOnBackBtn();
 });

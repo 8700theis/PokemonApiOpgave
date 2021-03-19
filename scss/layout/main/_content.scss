@@ -36,8 +36,8 @@
             border-top-right-radius: 3rem;
             border-bottom-right-radius: 3rem;
             &:hover {
-                background-color: lighten(color(poke-red), 5%);
-                border-color: lighten(color(poke-red), 5%);
+                background-color: lighten(color(poke-red), 15%);
+                border-color: lighten(color(poke-red), 15%);
             }
         }
     }

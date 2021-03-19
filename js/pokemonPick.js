@@ -53,6 +53,7 @@ function getPokemon(name, moveOne, moveTwo, moveThree, moveFour) {
                     })
             }
             if (thisPokemon.name == "mewtwo") {
+                thisPokemon.lvl = 70;
                 mewtwo.push(thisPokemon);
             } else {
                 pokemonList.push(thisPokemon);
@@ -190,4 +191,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(addEventOnPokeImages, 1000);
     setTimeout(addEventOnTrainerPokemons, 1000);
     setTimeout(saveMewtwo, 1000);
+
 });

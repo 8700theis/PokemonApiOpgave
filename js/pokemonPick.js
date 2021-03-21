@@ -174,19 +174,19 @@ const saveMewtwo = () => {
 document.addEventListener('DOMContentLoaded', () => {
     insetTrainerName();
     addEventOnFightBtn();
-    getPokemon("charizard", 0, 1, 2, 37);
-    getPokemon("machamp", 0, 1, 2, 77);
-    getPokemon("gengar", 0, 1, 2, 77);
-    getPokemon("gyarados", 0, 1, 2, 77);
-    getPokemon("raichu", 0, 1, 2, 30);
-    getPokemon("hydreigon", 0, 1, 2, 30);
-    getPokemon("suicune", 0, 1, 2, 30);
-    getPokemon("kyurem", 0, 1, 2, 30);
-    getPokemon("rayquaza", 0, 1, 2, 30);
-    getPokemon("kyogre", 0, 1, 2, 30);
-    getPokemon("lucario", 0, 1, 2, 30);
-    getPokemon("tyranitar", 0, 1, 2, 30);
-    getPokemon("mewtwo", 0, 1, 2, 23);
+    getPokemon("charizard", 17, 37, 84, 24);
+    getPokemon("machamp", 32, 48, 16, 73);
+    getPokemon("gengar", 28, 36, 30, 21);
+    getPokemon("gyarados", 30, 11, 41, 15);
+    getPokemon("raichu", 72, 74, 18, 30);
+    getPokemon("hydreigon", 34, 74, 10, 8);
+    getPokemon("suicune", 10, 12, 14, 15);
+    getPokemon("kyurem", 27, 3, 42, 19);
+    getPokemon("rayquaza", 87, 32, 41, 89);
+    getPokemon("kyogre", 18, 4, 12, 7);
+    getPokemon("lucario", 7, 38, 84, 41);
+    getPokemon("tyranitar", 31, 11, 33, 6);
+    getPokemon("mewtwo", 29, 17, 30, 23);
     setTimeout(insetPokemonImage, 1000)
     setTimeout(addEventOnPokeImages, 1000);
     setTimeout(addEventOnTrainerPokemons, 1000);

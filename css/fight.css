@@ -372,15 +372,28 @@ html {
   display: flex;
   z-index: 1000; }
 
-.test {
-  animation-name: shake;
+.currentAttack {
+  animation-name: currentPokemonAttack;
   animation-duration: .3s;
   animation-iteration-count: 1;
   animation-timing-function: ease;
   animation-fill-mode: forwards; }
 
-@keyframes shake {
+.mewtwoAttack {
+  animation-name: bossPokemonAttack;
+  animation-duration: .3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards; }
+
+@keyframes currentPokemonAttack {
   from {
     transform: translate(100px, -100px); }
+  to {
+    transform: translate(0, 0); } }
+
+@keyframes bossPokemonAttack {
+  from {
+    transform: translate(-100px, 100px); }
   to {
     transform: translate(0, 0); } }

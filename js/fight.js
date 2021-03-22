@@ -159,14 +159,14 @@ const addEventOnMoves = () => {
                     }
                 }
 
-                currentPokeImg.className = "test";
+                currentPokeImg.className = "currentAttack";
                 setTimeout(function() {
-                    currentPokeImg.className = ""
+                    currentPokeImg.className = "";
                 }, 1000);
                 insetCurrentPokemonInfo();
                 removeEventlisteners();
                 myTurn = false;
-                let mewtwoMakesAMoveSetTimeout = setTimeout(mewtwoMakesAMove(), 1000);
+                let mewtwoMakesAMoveSetTimeout = setTimeout(mewtwoMakesAMove, 1000);
             }
         });
     }
@@ -174,11 +174,17 @@ const addEventOnMoves = () => {
 
 function mewtwoMakesAMove() {
     if (myTurn == false) {
+
         let randomNumber = Math.floor(Math.random() * 4) + 1;
         currentFightingPokemon[0].currentHP = currentFightingPokemon[0].currentHP - mewtwo[0].moves[randomNumber].movePower;
+        bossPokeImg.className = "mewtwoAttack";
         insetCurrentPokemonInfo();
         updateCurrentFightPokeInListCurrentHP();
         addEventlisteners();
+        setTimeout(function() {
+            bossPokeImg.className = "";
+        }, 1000);
+
         myTurn = true;
     }
 }

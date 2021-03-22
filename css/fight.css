@@ -52,7 +52,14 @@ html {
       grid-row: 1 / 2;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr; }
+      grid-template-rows: 1fr;
+      position: relative; }
+      .content-fight-top > img {
+        position: absolute;
+        right: 20px;
+        top: 100px;
+        z-index: -1;
+        width: 300px; }
       .content-fight-top-pokemon {
         display: flex;
         align-items: center;
@@ -98,7 +105,14 @@ html {
       grid-row: 2 / 3;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr; }
+      grid-template-rows: 1fr;
+      position: relative; }
+      .content-fight-bottom > img {
+        position: absolute;
+        left: 20px;
+        bottom: 10px;
+        z-index: -1;
+        width: 300px; }
       .content-fight-bottom-pokemon {
         display: flex;
         align-items: center;

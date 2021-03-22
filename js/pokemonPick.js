@@ -187,9 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     getPokemon("lucario", 7, 38, 84, 41);
     getPokemon("tyranitar", 31, 11, 33, 6);
     getPokemon("mewtwo", 29, 17, 30, 23);
-    setTimeout(insetPokemonImage, 1000)
-    setTimeout(addEventOnPokeImages, 1000);
-    setTimeout(addEventOnTrainerPokemons, 1000);
-    setTimeout(saveMewtwo, 1000);
-
+    let insetPokemonImageSetTimeout = setTimeout(insetPokemonImage, 1500);
+    let addEventOnPokeImagesSetTimeout = setTimeout(addEventOnPokeImages, 1500);
+    let addEventOnTrainerPokemonsSetTimeout = setTimeout(addEventOnTrainerPokemons, 1500);
+    let saveMewtwoSetTimeout = setTimeout(saveMewtwo, 1500);
 });

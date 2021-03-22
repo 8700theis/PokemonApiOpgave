@@ -144,28 +144,42 @@ const addEventOnFightBtn = () => {
 const addEventOnMoves = () => {
     for (let i = 0; i < movesWrapper.length; i++) {
         movesWrapper[i].addEventListener("click", (e) => {
-            let clickedMoveName = e.target.children[0].children[0].innerText;
-            for (let i = 0; i < currentFightingPokemon[0].moves.length; i++) {
-                if (currentFightingPokemon[0].moves[i].moveName == clickedMoveName) {
-                    mewtwo[0].HP = mewtwo[0].HP - currentFightingPokemon[0].moves[i].moveDamage;
-                    if (mewtwo[0].HP <= 0) {
-                        mewtwo[0].HP = 0;
-                        bossPokeImg.classList.add("pokemon-dead");
-                        resultpage.classList.add("show-resultpage");
-                        removeEventlisteners();
+            if (myTurn == true) {
+                let clickedMoveName = e.target.children[0].children[0].innerText;
+                for (let i = 0; i < currentFightingPokemon[0].moves.length; i++) {
+                    if (currentFightingPokemon[0].moves[i].moveName == clickedMoveName) {
+                        mewtwo[0].HP = mewtwo[0].HP - currentFightingPokemon[0].moves[i].moveDamage;
+                        if (mewtwo[0].HP <= 0) {
+                            mewtwo[0].HP = 0;
+                            bossPokeImg.classList.add("pokemon-dead");
+                            resultpage.classList.add("show-resultpage");
+                            removeEventlisteners();
+                        }
+                        insetBossPokemonInfo();
                     }
-                    insetBossPokemonInfo();
                 }
+
+                currentPokeImg.className = "test";
+                setTimeout(function() {
+                    currentPokeImg.className = ""
+                }, 1000);
+                insetCurrentPokemonInfo();
+                removeEventlisteners();
+                myTurn = false;
+                let mewtwoMakesAMoveSetTimeout = setTimeout(mewtwoMakesAMove(), 1000);
             }
-
-            currentPokeImg.className = "test";
-            setTimeout(function() {
-                currentPokeImg.className = ""
-            }, 1000);
-
-
-            insetCurrentPokemonInfo();
         });
+    }
+}
+
+function mewtwoMakesAMove() {
+    if (myTurn == false) {
+        let randomNumber = Math.floor(Math.random() * 4) + 1;
+        currentFightingPokemon[0].currentHP = currentFightingPokemon[0].currentHP - mewtwo[0].moves[randomNumber].movePower;
+        insetCurrentPokemonInfo();
+        updateCurrentFightPokeInListCurrentHP();
+        addEventlisteners();
+        myTurn = true;
     }
 }
 
@@ -205,6 +219,19 @@ const chooseThisPokemon = (e) => {
             hidePokemonList();
         }
     }
+}
+
+const updateCurrentFightPokeInListCurrentHP = () => {
+    let pokemonInBagCurrentHP = document.querySelectorAll(".current-hp");
+    let pokemonInBagName = document.querySelectorAll(".pokemon-name");
+    for (let i = 0; i < trainerList.length; i++) {
+        if (currentFightingPokemon[0].name == trainerList[i].name) {
+            trainerList[i].currentHP = currentFightingPokemon[0].currentHP;
+            pokemonInBagCurrentHP[i].innerText = trainerList[i].currentHP;
+            console.log(i);
+        }
+    }
+
 }
 
 const showPokemonList = () => {
@@ -266,6 +293,7 @@ const insetPokemons = () => {
 
         let hpValueOne = document.createElement("P");
         hpValueOne.classList.add("hp-value");
+        hpValueOne.classList.add("current-hp");
         hpValueWrapper.appendChild(hpValueOne);
         /* Insetting current HP */
         hpValueOne.innerText = trainerList[i].currentHP;

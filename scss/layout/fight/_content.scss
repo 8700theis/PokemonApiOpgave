@@ -98,6 +98,7 @@
                 img {
                     width: 200px;
                     height: auto;
+                    transition: all 0.1s;
                 }
             }
             section {
@@ -273,10 +274,10 @@
             position: absolute;
             bottom: 40px;
             right: 40px;
-            padding: 1.5rem 2.5rem;
+            padding: 1.5rem 3.5rem;
             background-color: color(poke-red);
             color: #fff;
-            border-radius: 2rem;
+            border-radius: 3rem;
             font-size: size(xs);
             cursor: pointer;
             transition: all .3s;
@@ -408,4 +409,21 @@
 .show-resultpage {
     display: flex;
     z-index: 1000;
+}
+
+.test {
+    animation-name: shake;
+    animation-duration: .3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shake {
+    from {
+        transform: translate(100px, -100px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
 }

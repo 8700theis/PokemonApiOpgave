@@ -37,7 +37,17 @@ let overlayHeading = document.querySelector(".content-bottom-left-overlay-headin
 */
 let currentFightingPokemon = [trainerList[0]];
 
+let myTurn = true;
 
+const removeEventlisteners = () => {
+    pokemonBtn.removeEventListener("click", showPokemonList);
+    fightBtn.removeEventListener("click", showMoves);
+}
+
+const addEventlisteners = () => {
+    pokemonBtn.addEventListener("click", showPokemonList);
+    fightBtn.addEventListener("click", showMoves);
+}
 
 const calculateHP = () => {
     let hp = 0;
@@ -113,6 +123,8 @@ const insetCurrentPokemonInfo = () => {
         overlay.classList.add("show-overlay");
     }
 
+
+
     currentPokeImg.src = currentFightingPokemon[0].imgSpriteBack;
     currentPokeName.innerText = currentFightingPokemon[0].name;
     currentPokeLvl.innerText = `lvl. ${currentFightingPokemon[0].lvl}`;
@@ -140,11 +152,19 @@ const addEventOnMoves = () => {
                         mewtwo[0].HP = 0;
                         bossPokeImg.classList.add("pokemon-dead");
                         resultpage.classList.add("show-resultpage");
-                        pokemonBtn.removeEventListener("click", showPokemonList);
+                        removeEventlisteners();
                     }
                     insetBossPokemonInfo();
                 }
             }
+
+            currentPokeImg.className = "test";
+            setTimeout(function() {
+                currentPokeImg.className = ""
+            }, 1000);
+
+
+            insetCurrentPokemonInfo();
         });
     }
 }

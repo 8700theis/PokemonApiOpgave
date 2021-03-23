@@ -123,8 +123,6 @@ const insetCurrentPokemonInfo = () => {
         overlay.classList.add("show-overlay");
     }
 
-
-
     currentPokeImg.src = currentFightingPokemon[0].imgSpriteBack;
     currentPokeName.innerText = currentFightingPokemon[0].name;
     currentPokeLvl.innerText = `lvl. ${currentFightingPokemon[0].lvl}`;
@@ -175,17 +173,47 @@ const addEventOnMoves = () => {
 function mewtwoMakesAMove() {
     if (myTurn == false) {
 
-        let randomNumber = Math.floor(Math.random() * 4) + 1;
+        let randomNumber = Math.floor(Math.random() * 4);
         currentFightingPokemon[0].currentHP = currentFightingPokemon[0].currentHP - mewtwo[0].moves[randomNumber].movePower;
+        if (currentFightingPokemon[0].currentHP <= 0) {
+            currentFightingPokemon[0].currentHP = 0;
+            currentPokeImg.classList.add("pokemon-dead");
+            fightBtn.removeEventListener("click", showMoves);
+            pokemonBtn.addEventListener("click", showPokemonList);
+            insetCurrentPokemonInfo();
+            overlayHeading.innerText = `${currentFightingPokemon[0].name} has fainted, whitch Pokémon!`;
+        } else {
+            addEventlisteners();
+            insetCurrentPokemonInfo();
+        }
         bossPokeImg.className = "mewtwoAttack";
-        insetCurrentPokemonInfo();
         updateCurrentFightPokeInListCurrentHP();
-        addEventlisteners();
+        checkNumberOfDeadPokemons();
         setTimeout(function() {
             bossPokeImg.className = "";
         }, 1000);
 
         myTurn = true;
+    }
+}
+
+const checkNumberOfDeadPokemons = () => {
+    let pokemonItem = document.querySelectorAll(".content-pokemon-list-item");
+    let deadPokemons = 0;
+    for (let i = 0; i < trainerList.length; i++) {
+        if (trainerList[i].currentHP == 0) {
+            deadPokemons++
+            if (!pokemonItem[i].classList.contains("pokemon-dead")) {
+                pokemonItem[i].classList.add("pokemon-dead");
+                pokemonItem[i].removeEventListener("click", chooseThisPokemon);
+            }
+
+        }
+    }
+    if (deadPokemons == trainerList.length) {
+        resultpage.children[0].innerText = `You have been defeated by Mewtwo, restart and try again!`;
+        resultpage.classList.add("show-resultpage");
+        removeEventlisteners();
     }
 }
 
@@ -220,9 +248,13 @@ const chooseThisPokemon = (e) => {
             pickedPokemon = trainerList[i];
             currentFightingPokemon.pop();
             currentFightingPokemon.push(pickedPokemon);
+            if (currentPokeImg.classList.contains("pokemon-dead")) {
+                currentPokeImg.classList.remove("pokemon-dead");
+            }
             insetCurrentPokemonInfo();
             calculateMewtwoAttack();
             hidePokemonList();
+            addEventlisteners();
         }
     }
 }

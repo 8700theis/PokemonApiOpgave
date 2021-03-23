@@ -159,7 +159,9 @@ const addEventOnMoves = () => {
                 insetCurrentPokemonInfo();
                 removeEventlisteners();
                 myTurn = false;
-                let mewtwoMakesAMoveSetTimeout = setTimeout(mewtwoMakesAMove, 1000);
+                if (!mewtwo[0].HP == 0) {
+                    let mewtwoMakesAMoveSetTimeout = setTimeout(mewtwoMakesAMove, 1000);
+                }
             }
         });
     }

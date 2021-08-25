@@ -354,4 +354,5 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventOnMoves();
     addEventOnPokemonsInBag();
     addEventOnBackBtn();
+    console.log(mewtwo);
 });
